@@ -1,6 +1,7 @@
 use crate::parser::string::parse_string;
 use crate::parser::NadiError;
 use crate::parser::{ParseError as TaskParseError, ParseErrorType};
+use crate::tasks::{Task, TaskType, TaskInput, FunctionCall, TaskKeyword};
 use colored::Colorize;
 use nadi_core::attrs::{Attribute, Date, DateTime, Time};
 use nom::{
@@ -185,13 +186,6 @@ pub enum TaskToken {
     DateTime,
 }
 
-#[derive(Clone, PartialEq, Debug)]
-pub enum TaskKeyword {
-    Node,
-    Network,
-    Exit,
-    Help,
-}
 
 impl<'a> Token<'a> {
     pub fn colored_print(&self) {
@@ -324,6 +318,7 @@ fn variable<'a>(i: &'a str) -> TokenRes<'a> {
         "node" => TaskToken::Keyword(TaskKeyword::Node),
         "network" => TaskToken::Keyword(TaskKeyword::Network),
         "net" => TaskToken::Keyword(TaskKeyword::Network),
+        "env" => TaskToken::Keyword(TaskKeyword::Env),
         "exit" => TaskToken::Keyword(TaskKeyword::Exit),
         "help" => TaskToken::Keyword(TaskKeyword::Help),
         _ => {

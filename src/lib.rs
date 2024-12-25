@@ -4,6 +4,7 @@ pub mod network;
 pub mod node;
 pub mod plugins;
 pub mod table;
+pub mod tasks;
 pub mod timeseries;
 
 #[cfg(feature = "functions")]
