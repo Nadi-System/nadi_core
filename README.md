@@ -1,3 +1,5 @@
+Archieved as this is now part of the [Nadi System](https://github.com/Nadi-System/nadi-system) repo.
+
 # Nadi Core Library
 
 The Core library for all the other nadi-system to use as well as for the plugins to use.
